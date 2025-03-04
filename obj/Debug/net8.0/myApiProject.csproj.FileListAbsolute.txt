@@ -1,14 +1,11 @@
-C:\Users\user1\core\myApiProject\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\user1\core\myApiProject\bin\Debug\net8.0\appsettings.json
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.exe
-C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.deps.json
-C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.runtimeconfig.json
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.dll
-C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.pdb
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\user1\core\myApiProject\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\user1\core\myApiProject\bin\Debug\net8.0\appsettings.json
 C:\Users\user1\core\myApiProject\obj\Debug\net8.0\myApiProject.csproj.AssemblyReference.cache
 C:\Users\user1\core\myApiProject\obj\Debug\net8.0\myApiProject.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\user1\core\myApiProject\obj\Debug\net8.0\myApiProject.AssemblyInfoInputs.cache
@@ -29,5 +26,8 @@ C:\Users\user1\core\myApiProject\obj\Debug\net8.0\myApiPro.5AFF1848.Up2Date
 C:\Users\user1\core\myApiProject\obj\Debug\net8.0\myApiProject.dll
 C:\Users\user1\core\myApiProject\obj\Debug\net8.0\refint\myApiProject.dll
 C:\Users\user1\core\myApiProject\obj\Debug\net8.0\myApiProject.pdb
+C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.deps.json
+C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.runtimeconfig.json
+C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.pdb
 C:\Users\user1\core\myApiProject\obj\Debug\net8.0\myApiProject.genruntimeconfig.cache
 C:\Users\user1\core\myApiProject\obj\Debug\net8.0\ref\myApiProject.dll
