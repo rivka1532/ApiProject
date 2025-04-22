@@ -1,0 +1,80 @@
+/* כללי */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* פונט מודרני יותר */
+    background-color: #f0f8f8; /* צבע רקע בהיר */
+    color: #333; /* צבע טקסט כהה */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* כל התוכן ממורכז */
+}
+
+/* כפתורים ושדות */
+input[type='submit'],
+button,
+[aria-label] {
+    cursor: pointer;
+    padding: 12px 24px; /* גודל הכפתור השתנה */
+    border: none;
+    border-radius: 8px; /* רדיוס מעוגל יותר */
+    background-color: #008080; /* טורקיז כהה */
+    color: white;
+    font-size: 18px; /* פונט יותר גדול לכפתורים */
+    transition: background-color 0.3s ease;
+}
+
+input[type='submit']:hover,
+button:hover {
+    background-color: #00b3b3; /* טורקיז בהיר */
+}
+
+/* טבלה */
+table {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid #008080; /* גבולות בגוון טורקיז */
+    border-collapse: collapse;
+    width: 80%; /* הגבלנו את רוחב הטבלה ל-80% מהדף */
+    margin: 20px auto; /* ממורכז בעמוד */
+}
+
+th {
+    background-color: #008080; /* טורקיז כהה */
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+td {
+    border: 1px solid #008080; /* גבולות בגוון טורקיז */
+    padding: 12px;
+    text-align: left;
+}
+
+/* עיצוב עבור כפתורי עריכה ומחיקה */
+td button {
+    margin-right: 10px;
+}
+
+button:focus, input[type='submit']:focus {
+    outline: none;
+    box-shadow: 0 0 5px #00b3b3; /* הצללה בגוון טורקיז בהיר כאשר יש פוקוס */
+}
+
+/* תצוגת טופס עריכה */
+#editBook {
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid #008080;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* ספירה של ספרים */
+#counter {
+    font-size: 20px; /* פונט יותר גדול */
+    color: #333;
+    margin-top: 20px;
+}

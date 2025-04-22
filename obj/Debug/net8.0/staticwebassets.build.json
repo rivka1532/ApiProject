@@ -1,11 +1,77 @@
 {
   "Version": 1,
-  "Hash": "lfF4KY9OOZfhm/O2doj00NSEgoJz42RRm//2mU44Uvw=",
+  "Hash": "KmFJ2pUPkq54PT21vSCmxby7/5IABpP3snOuUjvxWLg=",
   "Source": "myApiProject",
   "BasePath": "_content/myApiProject",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "myApiProject\\wwwroot",
+      "Source": "myApiProject",
+      "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
+      "BasePath": "_content/myApiProject",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\site.css",
+      "SourceId": "myApiProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
+      "BasePath": "_content/myApiProject",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\index.html",
+      "SourceId": "myApiProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
+      "BasePath": "_content/myApiProject",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\js\\site.js",
+      "SourceId": "myApiProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
+      "BasePath": "_content/myApiProject",
+      "RelativePath": "js/site.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site.js"
+    }
+  ]
 }

@@ -36,3 +36,6 @@ C:\Users\user1\core\myApiProject\bin\Debug\net8.0\MailKit.dll
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\MimeKit.dll
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\user1\core\myApiProject\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\user1\core\myApiProject\bin\Debug\net8.0\Data\Book.json
+C:\Users\user1\core\myApiProject\bin\Debug\net8.0\Data\User.json
+C:\Users\user1\core\myApiProject\bin\Debug\net8.0\myApiProject.staticwebassets.runtime.json

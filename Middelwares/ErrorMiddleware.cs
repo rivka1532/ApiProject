@@ -20,12 +20,28 @@ public class ErrorMiddleware
         }
         catch (ApplicationException ex)
         {
-            c.Response.StatusCode = 400;
+            if (!c.Response.HasStarted)
+            {
+                c.Response.StatusCode = 400; // או קוד אחר שמתאים
+            }
+            else
+            {
+                // ניתן לרשום Log שמזהיר שהתגובה כבר התחילה
+                Console.WriteLine("Warning: Attempted to set StatusCode after response started.");
+            }
             await c.Response.WriteAsync(ex.Message);
         }
         catch (Exception e)
         {
-            c.Response.StatusCode = 500;
+            if (!c.Response.HasStarted)
+            {
+                c.Response.StatusCode = 500; // או קוד אחר שמתאים
+            }
+            else
+            {
+                // ניתן לרשום Log שמזהיר שהתגובה כבר התחילה
+                Console.WriteLine("Warning: Attempted to set StatusCode after response started.");
+            }
             await c.Response.WriteAsync("פנה לתמיכה טכנית");
         }
     }

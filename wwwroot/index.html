@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/site.css">    
+    <title>Book CRUD</title>
+</head>
+<body>
+    <!-- <div id="addBook"> -->
+        <h1>Book CRUD</h1>
+        <h3>Add</h3>
+        <form action="javascript:void(0);" method="post" onsubmit="addBook()">
+            <input type="text" id="addName" placeholder="Book name">
+            <input type="submit" value="Add">
+        </form>
+    <!-- </div> -->
+    <div id="editBook">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateBook()">
+            <input type="hidden" id="editId">
+            <input type="text" id="editName">
+            <input type="text" id="editAuthor">
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="books"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-verision="true"></script>
+    <script type="text/javascript">
+        getBooks();
+    </script>
+</body>
+</html>
