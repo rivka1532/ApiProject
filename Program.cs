@@ -1,6 +1,7 @@
 using Middleware.Middlewares;
 using myApiProject.Middlewares;
 using myApiProject.Services;
+using myProj.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddBookConst();
+builder.Services.AddBookJson();
 builder.Services.AddUserConst();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
