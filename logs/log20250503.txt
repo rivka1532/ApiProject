@@ -1,0 +1,47 @@
+2025-05-03 20:32:47.406 +03:00 [INF] User profile is available. Using 'C:\Users\user1\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-03 20:32:47.538 +03:00 [INF] Now listening on: http://localhost:5153
+2025-05-03 20:32:47.545 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-03 20:32:47.548 +03:00 [INF] Hosting environment: Development
+2025-05-03 20:32:47.551 +03:00 [INF] Content root path: C:\Users\user1\core\myApiProject
+2025-05-03 20:32:50.067 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/book - null null
+2025-05-03 20:32:50.122 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-03 20:32:50.176 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-03 20:32:50.182 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-05-03 20:32:50.192 +03:00 [INF] Handled GET /book in 106.7543 ms - User: Anonymous
+2025-05-03 20:32:50.203 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/book - 401 0 null 138.086ms
+2025-05-03 20:32:55.194 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/index.html - null null
+2025-05-03 20:32:55.363 +03:00 [INF] Handled GET /swagger/index.html in 154.9392 ms - User: Anonymous
+2025-05-03 20:32:55.372 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/index.html - 200 null text/html;charset=utf-8 178.3295ms
+2025-05-03 20:32:55.409 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/index.js - null null
+2025-05-03 20:32:55.423 +03:00 [INF] Handled GET /swagger/index.js in 4.4162 ms - User: Anonymous
+2025-05-03 20:32:55.431 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/index.js - 200 null application/javascript;charset=utf-8 22.3866ms
+2025-05-03 20:32:55.922 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - null null
+2025-05-03 20:32:56.235 +03:00 [INF] Handled GET /swagger/v1/swagger.json in 298.9635 ms - User: Anonymous
+2025-05-03 20:32:56.241 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 318.3201ms
+2025-05-03 20:33:11.933 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5153/User/login - application/json 81
+2025-05-03 20:33:11.969 +03:00 [INF] Executing endpoint 'myApiProject.Controllers.UserController.Login (myApiProject)'
+2025-05-03 20:33:12.032 +03:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Login(myApiProject.Models.User) on controller myApiProject.Controllers.UserController (myApiProject).
+2025-05-03 20:33:12.241 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-03 20:33:12.293 +03:00 [INF] Executed action myApiProject.Controllers.UserController.Login (myApiProject) in 241.9256ms
+2025-05-03 20:33:12.298 +03:00 [INF] Executed endpoint 'myApiProject.Controllers.UserController.Login (myApiProject)'
+2025-05-03 20:33:12.303 +03:00 [INF] Session started; Key:26a16129-9a41-4101-d73e-33a9665636ce, Id:911f9f14-f166-8fbe-a931-88a64b23b32e
+2025-05-03 20:33:12.310 +03:00 [INF] Handled POST /User/login in 371.1268 ms - User: Anonymous
+2025-05-03 20:33:12.315 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5153/User/login - 200 null application/json; charset=utf-8 382.3677ms
+2025-05-03 20:33:33.621 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/Book - null null
+2025-05-03 20:33:33.754 +03:00 [INF] Executing endpoint 'myApiProject.Controllers.BookController.Get (myApiProject)'
+2025-05-03 20:33:33.764 +03:00 [INF] Route matched with {action = "Get", controller = "Book"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[myApiProject.Models.Book]] Get() on controller myApiProject.Controllers.BookController (myApiProject).
+2025-05-03 20:33:33.798 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[myApiProject.Models.Book, myApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-03 20:33:33.814 +03:00 [INF] Executed action myApiProject.Controllers.BookController.Get (myApiProject) in 36.7404ms
+2025-05-03 20:33:33.821 +03:00 [INF] Executed endpoint 'myApiProject.Controllers.BookController.Get (myApiProject)'
+2025-05-03 20:33:33.828 +03:00 [INF] Handled GET /Book in 192.0953 ms - User: admin
+2025-05-03 20:33:33.838 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/Book - 200 null application/json; charset=utf-8 216.1726ms
+2025-05-03 20:33:54.467 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/User/Get - null null
+2025-05-03 20:33:54.490 +03:00 [INF] Executing endpoint 'myApiProject.Controllers.UserController.Get (myApiProject)'
+2025-05-03 20:33:54.499 +03:00 [INF] Route matched with {action = "Get", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[myApiProject.Models.User]] Get() on controller myApiProject.Controllers.UserController (myApiProject).
+2025-05-03 20:33:54.514 +03:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[myApiProject.Models.User, myApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-03 20:33:54.539 +03:00 [INF] Executed action myApiProject.Controllers.UserController.Get (myApiProject) in 30.9509ms
+2025-05-03 20:33:54.546 +03:00 [INF] Executed endpoint 'myApiProject.Controllers.UserController.Get (myApiProject)'
+2025-05-03 20:33:54.556 +03:00 [INF] Handled GET /User/Get in 82.9422 ms - User: admin
+2025-05-03 20:33:54.564 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/User/Get - 200 null application/json; charset=utf-8 97.2148ms
+2025-05-03 20:34:26.680 +03:00 [INF] Application is shutting down...

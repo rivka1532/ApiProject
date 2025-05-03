@@ -1,6 +1,4 @@
 using System.Security.Claims;
-using Middleware.Middlewares;
-using myApiProject.Middlewares;
 using myApiProject.Services;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -8,6 +6,11 @@ using System.Text;
 using myApiProject.Interfaces;
 using System.Text.Json.Serialization;
 using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,8 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+builder.Host.UseSerilog();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IActiveUserService, ActiveUserService>();
@@ -91,6 +96,16 @@ builder.Services.AddControllers()
 
 var app = builder.Build();
 
+app.UseSerilogRequestLogging(options =>
+{
+    options.MessageTemplate = "Handled {RequestMethod} {RequestPath} in {Elapsed:0.0000} ms - User: {User}";
+    options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+    {
+        var user = httpContext.User.Identity?.Name ?? "Anonymous";
+        diagnosticContext.Set("User", user);
+    };
+});
+app.UseRouting();
 
 if (app.Environment.IsDevelopment())
 {
