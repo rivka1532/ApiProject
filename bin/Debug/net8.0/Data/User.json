@@ -1,1 +1,1 @@
-[{"Id":1,"UserName":"admin","Password":"admin123","Role":0},{"Id":2,"UserName":"user1","Password":"user123","Role":1},{"Id":3,"UserName":"guest","Password":"guest123","Role":1},{"Id":4,"UserName":"rivka","Password":"rivka123","Role":1}]
+[{"Id":1,"UserName":"admin","Password":"admin123","Role":0},{"Id":2,"UserName":"user1","Password":"user123","Role":1},{"Id":3,"UserName":"guest","Password":"guest123","Role":1},{"Id":4,"UserName":"rivka","Password":"rivka123","Role":1},{"Id":5,"UserName":"lea","Password":"lea123","Role":0}]

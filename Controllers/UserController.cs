@@ -51,11 +51,9 @@ public class UserController : ControllerBase
         {
             new Claim(ClaimTypes.NameIdentifier, existingUser.Id.ToString()),
             new Claim(ClaimTypes.Name, existingUser.UserName),
-            new Claim(ClaimTypes.Role,"User"),
+            new Claim(ClaimTypes.Role,existingUser.Role.ToString()),
         };
 
-        if (existingUser.Role == Role.Admin)
-            claims.Add(new Claim(ClaimTypes.Role, "Admin"));
 
         var token = UserTokenService.GetToken(claims);
 
@@ -66,14 +64,20 @@ public class UserController : ControllerBase
 
 
     [HttpGet]
-    [Route("[action]")]
     [Authorize]
     public ActionResult<IEnumerable<User>> Get()
     {
-        if (activeUser.GetActiveUser().Role != Role.Admin)
+        var user = activeUser.GetActiveUser();
+        if (user == null)
         {
-            return new List<User>{userService.Get(activeUser.GetActiveUser().Id)};
+            return Unauthorized();
         }
+
+        if (user.Role != 0)
+        {
+            return new List<User> { userService.Get(user.Id) };
+        }
+
         return userService.Get();
     }
 
