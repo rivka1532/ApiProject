@@ -2,6 +2,6 @@ namespace myApiProject.Models;
 
 public enum Role
 {
-    admin,
-    user
+    Admin,
+    User
 } 

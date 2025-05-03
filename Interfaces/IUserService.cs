@@ -9,6 +9,8 @@ public interface IUserService
 
     User Get(int id);
 
+    User Get(string name);
+
     int Insert(User newUser);
 
     bool Update(int id, User newUser);

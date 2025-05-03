@@ -3,7 +3,7 @@ using myApiProject.Interfaces;
 using myApiProject.Models;
 
 
-namespace myProj.Services;
+namespace myApiProject.Services;
 
 public class BookService : IBookService
 {

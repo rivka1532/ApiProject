@@ -1,1 +1,1 @@
-[{"Id": 1, "Name": "Avraham Cohen", "Phone": "0555555555", "Email": "55555@gmail.com", "Address": "Jeruzalem"}, {"Id": 2, "Name": "Yahakov Levi", "Phone": "044444444", "Email": "4444@gmail.com", "Address": "Bne braq"}]
+[{"Id":1,"UserName":"admin","Password":"admin123","Role":0},{"Id":2,"UserName":"user1","Password":"user123","Role":1},{"Id":3,"UserName":"guest","Password":"guest123","Role":1},{"Id":4,"UserName":"rivka","Password":"rivka123","Role":1}]

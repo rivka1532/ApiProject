@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using myApiProject.Models;
 using myApiProject.Interfaces;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace myApiProject.Services;
 
@@ -19,7 +20,9 @@ public class UserService : IUserService
             users = JsonSerializer.Deserialize<List<User>>(jsonFile.ReadToEnd(),
             new JsonSerializerOptions
             {
-                PropertyNameCaseInsensitive = true
+                PropertyNameCaseInsensitive = true,
+                Converters = { new JsonStringEnumConverter() }
+
             });
         }
     }
@@ -28,7 +31,9 @@ public class UserService : IUserService
         File.WriteAllText(filePath, JsonSerializer.Serialize(users));
     }
     public List<User> Get() => users;
-    public User Get(int id) => users.FirstOrDefault<User>(u => u.Id == id);    
+    public User Get(int id) => users.FirstOrDefault<User>(u => u.Id == id);   
+    public User Get(string name) => users.FirstOrDefault<User>(u => u.UserName == name);    
+
     public int Insert(User newUser)
     {
         if(IsUserEmpty(newUser))
@@ -64,13 +69,13 @@ public class UserService : IUserService
     public bool IsUserEmpty(User user)
     {
         return user == null;
-    }   
-   
+    }
+
 }
 
 public static class UserUtilities
 {
-    public static void AddUserConst(this IServiceCollection services)
+    public static void AddUserJson(this IServiceCollection services)
     {
         services.AddSingleton<IUserService, UserService>();
 
