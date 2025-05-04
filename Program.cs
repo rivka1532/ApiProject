@@ -7,10 +7,10 @@ using myApiProject.Interfaces;
 using System.Text.Json.Serialization;
 using Serilog;
 
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Console()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
+// Log.Logger = new LoggerConfiguration()
+//     .WriteTo.Console()
+//     .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+//     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,13 +22,26 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Host.UseSerilog();
+builder.Host.UseSerilog((context, services, configuration) =>
+{
+    configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Services(services)
+        .Enrich.FromLogContext()
+        .WriteTo.Console()
+        .WriteTo.File(
+            path: context.Configuration["Logging:FilePath"] ?? "logs/log.txt",
+            rollingInterval: RollingInterval.Day,
+            fileSizeLimitBytes: 104857600, // 100MB
+            rollOnFileSizeLimit: true,
+            outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}"
+        );
+});
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IActiveUserService, ActiveUserService>();
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddControllers();
 builder.Services.AddBookJson();
 builder.Services.AddUserJson();
 
@@ -98,13 +111,22 @@ var app = builder.Build();
 
 app.UseSerilogRequestLogging(options =>
 {
-    options.MessageTemplate = "Handled {RequestMethod} {RequestPath} in {Elapsed:0.0000} ms - User: {User}";
+    options.MessageTemplate = "Handled {RequestMethod} {RequestPath} in {Elapsed:0.0000} ms - User: {User} - Controller: {Controller} - Action: {Action} - TimeStarted: {StartTime}";
+
     options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
     {
         var user = httpContext.User.Identity?.Name ?? "Anonymous";
+        var endpoint = httpContext.GetEndpoint();
+        var routePattern = endpoint?.Metadata.GetMetadata<Microsoft.AspNetCore.Routing.RouteNameMetadata>()?.RouteName;
+        var routeValues = httpContext.Request.RouteValues;
+
         diagnosticContext.Set("User", user);
+        diagnosticContext.Set("Controller", routeValues["controller"]?.ToString() ?? "Unknown");
+        diagnosticContext.Set("Action", routeValues["action"]?.ToString() ?? "Unknown");
+        diagnosticContext.Set("StartTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
     };
 });
+
 app.UseRouting();
 
 if (app.Environment.IsDevelopment())

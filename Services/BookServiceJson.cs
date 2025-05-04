@@ -32,9 +32,10 @@ public class BookService : IBookService
     public Book Get(int id) => books.FirstOrDefault(b => b.Id == id);
     public int Insert(Book newBook)
     {
+        int nextId = books.Any() ? books.Max(b => b.Id) + 1 : 1;
         if(IsBookEmpty(newBook))
             return -1;        
-        newBook.Id = books.Count()+1;
+        newBook.Id = nextId;
         books.Add(newBook);
         saveToFile();
         return newBook.Id;

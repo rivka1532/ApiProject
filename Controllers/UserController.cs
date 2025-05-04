@@ -102,7 +102,7 @@ public class UserController : ControllerBase
         }
     }
 
-    [HttpGet("byId/{id}")]
+    [HttpGet("{id}")]
     public ActionResult<User> Get(int id)
     {
         var user = userService.Get(id);

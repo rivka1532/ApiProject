@@ -36,9 +36,10 @@ public class UserService : IUserService
 
     public int Insert(User newUser)
     {
+        int nextId = users.Any() ? users.Max(u => u.Id) + 1 : 1;
         if(IsUserEmpty(newUser))
             return -1;        
-        newUser.Id = users.Count()+1;
+        newUser.Id = nextId;
         users.Add(newUser);
         saveToFile();
         return newUser.Id;
