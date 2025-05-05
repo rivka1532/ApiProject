@@ -44,6 +44,10 @@ builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddBookJson();
 builder.Services.AddUserJson();
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.HttpsPort = 443; // או הפורט המתאים
+});
 
 builder.Services.AddAuthentication(options =>
 {
