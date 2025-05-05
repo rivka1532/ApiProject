@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "37GboMeKrWf/LrcSBwhtprSAvpnPLQTNMMSDJ8iBw5w=",
+  "Hash": "mZfdiOqCpW0gqQab2n0auGhHxluxq46Lugos/xpr8h0=",
   "Source": "myApiProject",
   "BasePath": "_content/myApiProject",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\login.js"
+    },
+    {
+      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\js\\profile.js",
+      "SourceId": "myApiProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
+      "BasePath": "_content/myApiProject",
+      "RelativePath": "js/profile.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\profile.js"
     },
     {
       "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\js\\site.js",

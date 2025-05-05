@@ -78,3 +78,129 @@ button:focus, input[type='submit']:focus {
     color: #333;
     margin-top: 20px;
 }
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+input, select {
+    margin-left: 5px;
+}
+
+.user-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    background: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.user-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.user-card p {
+    margin: 10px 0;
+    color: #555;
+}
+
+.user-card label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-card input, .user-card select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-group {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-group button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #1976d2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-group button:hover {
+    background-color: #135ba1;
+}
+
+.edit-btn {
+    background-color: #ffa000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #fb8c00;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: sans-serif;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #f0f0f0;
+}
+
+.edit-form {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.edit-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.edit-form input,
+.edit-form select {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+button {
+    margin-right: 5px;
+}
+
+.error {
+    color: red;
+    font-size: 0.8em;
+    display: block;
+    margin-top: 2px;
+}
