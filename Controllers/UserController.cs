@@ -28,7 +28,9 @@ public class UserController : ControllerBase
     public ActionResult Login([FromBody] User loginUser)
     {
         // קריאה לפעולה שמביאה משתמש לפי שם משתמש
-        var existingUser = userService.Get(loginUser.UserName);
+        var users = userService.Get();
+
+        var existingUser = users.FirstOrDefault(u => u.UserName == loginUser.UserName || u.Email == loginUser.Email);
 
         if (existingUser == null)
         {
@@ -117,6 +119,17 @@ public class UserController : ControllerBase
     public ActionResult<User> Get(string userName)
     {
         var user = userService.Get(userName);
+        if (user == null)
+        {
+            return null;
+        }
+        return user;
+    }
+
+    [HttpGet("byEmail/{email}")]
+    public ActionResult<User> GetByEmail(string email)
+    {
+        var user = userService.GetByEmail(email);
         if (user == null)
         {
             return null;

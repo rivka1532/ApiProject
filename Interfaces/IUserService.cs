@@ -15,6 +15,7 @@ public interface IUserService
 
     bool Update(int id, User newUser);
 
-    bool Delete(int id); 
-   
+    bool Delete(int id);
+    User GetByEmail(string email);
+
 }

@@ -32,13 +32,19 @@ public class UserService : IUserService
     }
     public List<User> Get() => users;
     public User Get(int id) => users.FirstOrDefault<User>(u => u.Id == id);   
-    public User Get(string name) => users.FirstOrDefault<User>(u => u.UserName == name);    
+    public User Get(string name) => users.FirstOrDefault<User>(u => u.UserName == name);
+    public User GetByEmail(string email) => users.FirstOrDefault<User>(u => u.Email == email);    
+
 
     public int Insert(User newUser)
     {
         int nextId = users.Any() ? users.Max(u => u.Id) + 1 : 1;
         if(IsUserEmpty(newUser))
-            return -1;        
+            return -1;    
+        // if(users.Any(u => u.UserName == newUser.UserName))
+        //     return -1;
+        // if(users.Any(u => u.Email == newUser.Email))
+        //     return -1;    
         newUser.Id = nextId;
         users.Add(newUser);
         saveToFile();

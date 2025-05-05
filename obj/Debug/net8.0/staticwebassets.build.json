@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mZfdiOqCpW0gqQab2n0auGhHxluxq46Lugos/xpr8h0=",
+  "Hash": "2EftRUW0uuOSB8Gx+Dcm/f2LsjOLyz9bGfs1pdun078=",
   "Source": "myApiProject",
   "BasePath": "_content/myApiProject",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\books.htnl",
+      "SourceId": "myApiProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
+      "BasePath": "_content/myApiProject",
+      "RelativePath": "books.htnl",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\books.htnl"
+    },
     {
       "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\site.css",
       "SourceId": "myApiProject",
@@ -110,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\js\\users.js",
+      "SourceId": "myApiProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
+      "BasePath": "_content/myApiProject",
+      "RelativePath": "js/users.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\users.js"
     },
     {
       "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\profile.html",
