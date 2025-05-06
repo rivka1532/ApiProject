@@ -3,9 +3,13 @@ let books = [];
 let token = '';// = localStorage.getItem("token");
 let payload = '';
 
+const addName = document.getElementById('add-name');
+const addAuthor = document.getElementById('add-author');
+
 function getItems() {
 
     token = localStorage.getItem("token");
+
     if (token) {
         payload = JSON.parse(atob(token.split('.')[1]));
         console.log(payload);
@@ -41,15 +45,15 @@ function getItems() {
 const addItem = () => {
     console.log("in addItem");
     // const addCode = document.getElementById('add-code');
-    const addName = document.getElementById('add-name');
-    const addAuthor = document.getElementById('add-author');
+    // const addName = document.getElementById('add-name');
+    // const addAuthor = document.getElementById('add-author');
 
     const userName = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
 
     const item = {
         Id: 0,
         Name: addName.value,
-        Author: addAuthor.value.trim(),
+        Author: addAuthor.value,
         UserName: userName
     };
     console.log(item);
@@ -199,3 +203,38 @@ const signout=()=>{
     window.location.href="index.html";
 
 }
+
+let isNameAvailable = false;
+let isAuthorAvailable = false;
+
+
+const addBookBtn = document.getElementById('add-book'); 
+addBookBtn.disabled = true;
+
+function validateBookForm() {
+    const name = addName.value.trim();
+    const author = addAuthor.value.trim();
+
+    const allFilled = name !== '' && author !== '';
+
+    isDuplicateBook = books.some(book => 
+        book.name === name && book.author === author
+    );
+
+    if (allFilled && !isDuplicateBook) {
+        addBookBtn.disabled = false;
+    } else {
+        addBookBtn.disabled = true;
+    }
+
+    const feedback = document.getElementById('bookFeedback');
+    if (isDuplicateBook) {
+        feedback.textContent = 'Book already exists';
+        feedback.style.color = 'red';
+    } else {
+        feedback.textContent = '';
+    }
+}
+
+addName.addEventListener('input', validateBookForm);
+addAuthor.addEventListener('input', validateBookForm);

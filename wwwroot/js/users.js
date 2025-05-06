@@ -2,6 +2,7 @@ const uri = '/User';
 let users = [];
 let token = '';
 
+
 function getUsers() {
     token = localStorage.getItem('token');
 
@@ -172,3 +173,89 @@ const signout = () => {
 function goToMyProfile() {
     window.location.href = 'profile.html';
 }
+
+// async function checkAvailability(type, value) {
+//     const response = await fetch(`/api/User/check-${type}?value=${encodeURIComponent(value)}`);
+//     return response.ok ? (await response.json()).available : false;
+//   }
+
+//   document.getElementById("username").addEventListener("blur", async function () {
+//     const username = this.value;
+//     const available = await checkAvailability("username", username);
+//     const feedback = document.getElementById("usernameFeedback");
+//     feedback.textContent = available ? "זמין" : "כבר תפוס";
+//     feedback.style.color = available ? "green" : "red";
+//   });
+
+//   document.getElementById("email").addEventListener("blur", async function () {
+//     const email = this.value;
+//     const available = await checkAvailability("email", email);
+//     const feedback = document.getElementById("emailFeedback");
+//     feedback.textContent = available ? "זמין" : "כבר תפוס";
+//     feedback.style.color = available ? "green" : "red";
+//   });
+
+let isUsernameAvailable = false;
+let isEmailAvailable = false;
+
+const addUserName = document.getElementById('add-userName');
+const addEmail = document.getElementById('add-email');
+const addUserBtn = document.getElementById('add-user');
+const addPassword = document.getElementById("add-password");
+window.addEventListener('DOMContentLoaded', function () {
+    // const addUserBtn = document.getElementById('add-user');
+    addUserBtn.disabled = true;
+});
+
+function validateForm() {
+    const username = addUserName.value.trim();
+    const email = addEmail.value.trim();
+    const password = addPassword.value.trim();
+
+    const allFilled = username !== "" && email !== "" && password !== "";
+    if (allFilled && isUsernameAvailable && isEmailAvailable) {
+        addUserBtn.disabled = false;
+    } else {
+        addUserBtn.disabled = true;
+    }
+}
+
+addUserName.addEventListener('input', async function () {
+    const username = this.value;
+    const existingUser = users.find(user => user.userName === username);
+    if (existingUser) {
+        const feedback = document.getElementById("usernameFeedback");
+        feedback.textContent = "Already taken";
+        feedback.style.color = "red";
+        isUsernameAvailable = false;
+        return;
+    }   
+    else {
+        const feedback = document.getElementById("usernameFeedback");
+        feedback.textContent = "Available";
+        feedback.style.color = "green";
+        isUsernameAvailable = true;
+    }
+    validateForm();
+})
+
+addEmail.addEventListener('input', async function () {
+    const email = this.value;
+    const existingEmail = users.find(user => user.email === email);
+    if (existingEmail) {
+        const feedback = document.getElementById("emailFeedback");
+        feedback.textContent = "Already taken";
+        feedback.style.color = "red";
+        isEmailAvailable = false;
+        return;
+    }   
+    else {
+        const feedback = document.getElementById("emailFeedback");
+        feedback.textContent = "Available";
+        feedback.style.color = "green";
+        isEmailAvailable = true;
+    }
+    validateForm();
+})
+
+addPassword.addEventListener('input', validateForm);

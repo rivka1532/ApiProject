@@ -69,7 +69,8 @@ public class UserController : ControllerBase
     [Authorize]
     public ActionResult<IEnumerable<User>> Get()
     {
-        var user = activeUser.GetActiveUser();
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
         if (user == null)
         {
             return Unauthorized();
@@ -136,6 +137,21 @@ public class UserController : ControllerBase
         }
         return user;
     }
+
+
+    // [HttpGet("check-username")]
+    // public IActionResult CheckUserNameAvailability(string value)
+    // {
+    //     var exists = userService.Get().Any(u => u.UserName == value);
+    //     return Ok(new { available = !exists });
+    // }
+
+    // [HttpGet("check-email")]
+    // public IActionResult CheckEmailAvailability(string value)
+    // {
+    //     var exists = userService.Get().Any(u => u.Email == value);
+    //     return Ok(new { available = !exists });
+    // }
 
     [HttpPost]
     [Authorize(Policy = "Admin")]
