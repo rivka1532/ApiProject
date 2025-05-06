@@ -8,11 +8,14 @@ namespace myApiProject.Services;
 
 public class UserService : IUserService
 {
-   List<User>? users { get; }
+    List<User>? users { get; }
     private static string fileName = "User.json";
     private static string filePath;
-    public UserService(IHostEnvironment env)
+    private readonly IBookService _bookService;
+    public UserService(IHostEnvironment env, IBookService bookService)
     {
+        _bookService = bookService;
+
         filePath = Path.Combine(env.ContentRootPath, "Data", fileName);
 
         using (var jsonFile = File.OpenText(filePath))
@@ -68,11 +71,19 @@ public class UserService : IUserService
         var user = Get(id);
         if(user == null)
             return false;
+        
+        var userBooks = _bookService.Get().Where(b => b.UserName == user.UserName).ToList();
+        foreach (var book in userBooks)
+        {
+            _bookService.Delete(book.Id);
+        }
+
         users.Remove(user);
         saveToFile();
         return true;
     }
 
+    
     public bool IsUserEmpty(User user)
     {
         return user == null;

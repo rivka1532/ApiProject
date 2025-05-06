@@ -62,7 +62,6 @@ public class BookService : IBookService
         saveToFile();
         return true;
     }
-
     public bool IsBookEmpty(Book book)
     {
         return book == null;

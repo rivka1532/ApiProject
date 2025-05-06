@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\books.htnl",
-      "PackagePath": "staticwebassets\\books.htnl"
+      "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\books.html",
+      "PackagePath": "staticwebassets\\books.html"
     },
     {
       "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\site.css",
@@ -11,6 +11,10 @@
     {
       "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\js\\books.js",
+      "PackagePath": "staticwebassets\\js\\books.js"
     },
     {
       "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\js\\login.js",

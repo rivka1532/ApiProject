@@ -165,3 +165,7 @@ const signout = () => {
     localStorage.removeItem("token");
     window.location.href = "index.html";
 };
+
+function goToMyProfile() {
+    window.location.href = 'profile.html';
+}

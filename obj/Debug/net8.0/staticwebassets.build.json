@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2EftRUW0uuOSB8Gx+Dcm/f2LsjOLyz9bGfs1pdun078=",
+  "Hash": "ih1/bZnZVXUo6B250gaO5R3rY0t+MG8dLhraTvH6tZM=",
   "Source": "myApiProject",
   "BasePath": "_content/myApiProject",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\books.htnl",
+      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\books.html",
       "SourceId": "myApiProject",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
       "BasePath": "_content/myApiProject",
-      "RelativePath": "books.htnl",
+      "RelativePath": "books.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -33,7 +33,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\books.htnl"
+      "OriginalItemSpec": "wwwroot\\books.html"
     },
     {
       "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\site.css",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\js\\books.js",
+      "SourceId": "myApiProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\",
+      "BasePath": "_content/myApiProject",
+      "RelativePath": "js/books.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\books.js"
     },
     {
       "Identity": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\js\\login.js",

@@ -16,17 +16,18 @@ document.getElementById("login-form").addEventListener("submit", async function 
         const data = await response.json();
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.id);
-        decodedToken = parseJwt(data.token);
-        console.log(decodedToken); // הצגת ה־payload המפוענח
-        console.log(decodedToken.role);
-        if (decodedToken.role == "Admin") {
-            window.location.href = "users.html";
-        }
-        else
-        {
-            window.location.href = "profile.html";
-        }
+        // decodedToken = parseJwt(data.token);
+        // console.log(decodedToken); // הצגת ה־payload המפוענח
+        // console.log(decodedToken.role);
+        // if (decodedToken.role == "Admin") {
+        //     window.location.href = "users.html";
+        // }
+        // else
+        // {
+        //     window.location.href = "profile.html";
+        // }
         
+        window.location.href = "books.html";
     } else {
         const errorText = await response.text();
         alert("Error in connect" + errorText);

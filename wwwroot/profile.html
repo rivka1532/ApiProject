@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
+    <link rel="stylesheet" href="./css/site.css">
 </head>
 <body>
+    <h1>My Profile</h1>
+
     
+    <a href="./books.html">Books page</a><br>
+    
+    <button onclick="signout()">Sign out</button>
+    
+    <div id="userDetails">
+        <p id="userName"></p>
+        <p id="email"></p>
+        <p id="role"></p>
+        <p id="password"></p>
+        <button onclick="displayEditForm()">Edit</button>
+    </div>
+
+    <div id="editForm" style="display: none;">
+        <h2>Edit Profile</h2>
+        <label>User Name:<input type="text" id="edit-username"></label><br>
+        <label>Email:<input type="email" id="edit-email"></label><br>
+        <label>Role:
+            <select id="edit-role" disabled="true">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+        </label><br>
+        <label>Password:<input type="password" id="edit-password"></label><br><br>
+        <button onclick="updateUser()">Save</button>
+        <button onclick="closeInput()">Cancel</button>
+    </div>
+
+    <script src="./js/profile.js"></script>
+    <script type="text/javascript">
+        getProfile();
+    </script>
 </body>
 </html>
