@@ -5,8 +5,24 @@
       "PackagePath": "staticwebassets\\books.html"
     },
     {
+      "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\books.css",
+      "PackagePath": "staticwebassets\\css\\books.css"
+    },
+    {
+      "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\index.css",
+      "PackagePath": "staticwebassets\\css\\index.css"
+    },
+    {
+      "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\profile.css",
+      "PackagePath": "staticwebassets\\css\\profile.css"
+    },
+    {
       "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\css\\users.css",
+      "PackagePath": "staticwebassets\\css\\users.css"
     },
     {
       "Id": "C:\\Users\\user1\\core\\myApiProject\\wwwroot\\index.html",

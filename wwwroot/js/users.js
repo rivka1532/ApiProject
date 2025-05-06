@@ -95,10 +95,10 @@ function updateUser() {
 
     const user = {
         id: parseInt(userId, 10),
-        userName: document.getElementById('edit-Name').value.trim(),
-        email: document.getElementById('edit-Email').value.trim(),
+        userName: document.getElementById('edit-Name').value,
+        email: document.getElementById('edit-Email').value,
         role: document.getElementById('edit-Role').value,
-        password: document.getElementById('edit-Password').value.trim()
+        password: document.getElementById('edit-Password').value
     };
 
     fetch(`${uri}/${userId}`, {
@@ -141,16 +141,19 @@ function _displayUsers(data) {
         td1.appendChild(document.createTextNode(user.userName));
 
         let td2 = tr.insertCell(1);
-        td2.appendChild(document.createTextNode(user.email));
+        td2.appendChild(document.createTextNode(user.id));
 
         let td3 = tr.insertCell(2);
-        td3.appendChild(document.createTextNode(user.role));
+        td3.appendChild(document.createTextNode(user.email));
 
         let td4 = tr.insertCell(3);
-        td4.appendChild(editButton);
+        td4.appendChild(document.createTextNode(user.role));
 
         let td5 = tr.insertCell(4);
-        td5.appendChild(deleteButton);
+        td5.appendChild(editButton);
+        
+        let td6 = tr.insertCell(5);
+        td6.appendChild(deleteButton);
     });
 
     users = data;

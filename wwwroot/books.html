@@ -4,15 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Books CRUD</title>
-    <link rel="stylesheet" href="./css/site.css" />
+    <link rel="stylesheet" href="./css/books.css" />
 </head>
 
 <body>
     <h1>Books CRUD</h1>
+    <div class="sign-out-container">
+        <button onclick="signout()">Sign out</button>
+    </div>
     <a href="./profile.html" id="myProfile">My Profile</a><br>
     <a href="./users.html" id="users-page-link" style="display: none;">Users</a><br>
 
-    <button onclick="signout()">Sign out</button>
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
         <input type="text" id="add-name" placeholder="Book name">
         <input type="text" id="add-author" placeholder="Author">

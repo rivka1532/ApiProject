@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Users CRUD</title>
-    <link rel="stylesheet" href="./css/site.css" />
+    <link rel="stylesheet" href="./css/users.css" />
 </head>
 
 <body>
     <h1>Users CRUD</h1>
     <a href="./books.html">Books page</a><br>
 
-    <button onclick="signout()">Sign out</button>
+    <div class="sign-out-container">
+        <button onclick="signout()">Sign out</button>
+    </div>
+
+    <button onclick="goToMyProfile()">My Profile</button>
+    
 
     <form action="javascript:void(0);" method="POST" onsubmit="addUser()">
         <input type="text" id="add-userName" placeholder="User Name" required>

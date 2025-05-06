@@ -139,9 +139,13 @@ function closeInput() {
 }
 
 function _displayCount(itemCount) {
-    const name = (itemCount === 1) ? 'shoes' : 'Types of shoes';
+    const name = (itemCount === 1) ? 'book' : 'Types of books';
 
-    document.getElementById('counter').innerText = `${itemCount} ${name}`;
+    if (itemCount === 0) {
+        document.getElementById('counter').innerText = 'You have no books';
+    }
+    else
+        document.getElementById('counter').innerText = `${itemCount} ${name}`;
 }
 
 function _displayItems(data) {

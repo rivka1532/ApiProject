@@ -1,0 +1,142 @@
+/* הגדרת סגנונות כלליים */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;/* ריווח מעל לתוכן */
+}
+
+/* כותרת ראשית */
+h1 {
+    text-align: center; /* ממרכז את הטקסט */
+    font-size: 1.5rem; /* מקטין את הגודל */
+    font-weight: normal; /* מבטל את ההדגשה */
+    color: #333; /* שומר על צבע הכותרת */
+    margin-bottom: 20px; /* מרווח תחתון לכותרת */
+    width: 100%;  /* מרווח תחתון לכותרת */
+}
+
+/* קישורים */
+a {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 1rem;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.sign-out-container {
+    position: absolute; /* מציב את אלמנט ה-container באופן מוחלט */
+    top: 20px; /* מרחק מהחלק העליון */
+    right: 20px; /* מרחק מצד ימין */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: auto;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* עיצוב טופס */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 30px;
+}
+
+/* שדות קלט */
+input[type="text"], input[type="submit"] {
+    width: 94%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+}
+
+input[type="text"]:focus, input[type="submit"]:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+/* טבלה */
+table {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    display: none; /* ברירת מחדל - מוסתרת */
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f9;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* הודעת שגיאה */
+#error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        padding-top: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}

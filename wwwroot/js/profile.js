@@ -1,6 +1,7 @@
 const uri = '/User';
 let user = null;
 let token = '';
+let payload = '';
 
 function getProfile() {
     
@@ -13,7 +14,7 @@ function getProfile() {
     }
 
     
-    const payload = JSON.parse(atob(token.split('.')[1]));
+    payload = JSON.parse(atob(token.split('.')[1]));
     console.log(payload);
     const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
     console.log(userId);
@@ -31,8 +32,9 @@ function getProfile() {
         console.log(data);
         document.getElementById('userName').textContent  = data.userName;
         document.getElementById('email').textContent  = data.email;
-        document.getElementById('role').textContent  = data.role;
-        document.getElementById('password').textContent  = data.password;})
+        document.getElementById('role').textContent  = data.role;})
+        // document.getElementById('password').textContent  = data.password;})
+        
     .catch(error => console.error('Unable to get users.', error));
 }
 
@@ -43,6 +45,14 @@ function displayEditForm() {
     document.getElementById('edit-email').value = user.email;
     document.getElementById('edit-role').value = user.role;
     document.getElementById('edit-password').value = user.password;
+
+    const role=payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    if(role=="User")
+    {
+        console.log("in user");
+        const editRole =document.getElementById('edit-role');
+        editRole.disabled = true;
+    }
 
     document.getElementById('editForm').style.display = 'block';
 }

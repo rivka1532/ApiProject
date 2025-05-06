@@ -1,0 +1,125 @@
+/* הגדרות בסיסיות לדף */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* עיצוב כותרת */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* קישורים */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* עיצוב הטופס */
+#userDetails {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+.sign-out-container {
+    position: absolute; /* מציב את אלמנט ה-container באופן מוחלט */
+    top: 20px; /* מרחק מהחלק העליון */
+    right: 20px; /* מרחק מצד ימין */
+}
+
+/* עיצוב כפתור */
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px;
+}
+
+label{
+    font-weight: bolder;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+/* עיצוב טופס העריכה */
+#editForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+#editForm label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#editForm input, #editForm select {
+    width: 94.5%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#editForm input[type="password"] {
+    margin-bottom: 20px;
+}
+
+/* עיצוב בשדות קלט כשיש focus */
+input:focus, select:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* עיצוב ל-error message אם יש */
+#error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #userDetails, #editForm {
+        width: 100%;
+        padding: 15px;
+    }
+}

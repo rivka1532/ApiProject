@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My Profile</title>
-    <link rel="stylesheet" href="./css/site.css">
+    <link rel="stylesheet" href="./css/profile.css">
 </head>
 <body>
     <h1>My Profile</h1>
@@ -11,11 +11,16 @@
     
     <a href="./books.html">Books page</a><br>
     
-    <button onclick="signout()">Sign out</button>
-    
+    <div class="sign-out-container">
+        <button onclick="signout()">Sign out</button>
+    </div>
+
     <div id="userDetails">
+        <label for="userName" >User Name:</label>
         <p id="userName"></p>
+        <label for="email">Email: </label>
         <p id="email"></p>
+        <label for="role">Role: </p></label>
         <p id="role"></p>
         <p id="password"></p>
         <button onclick="displayEditForm()">Edit</button>
@@ -26,7 +31,7 @@
         <label>User Name:<input type="text" id="edit-username"></label><br>
         <label>Email:<input type="email" id="edit-email"></label><br>
         <label>Role:
-            <select id="edit-role" disabled="true">
+            <select id="edit-role">
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
             </select>
