@@ -76,8 +76,8 @@ public class BookController : ControllerBase
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
         newBook.UserName = user.UserName;
-        if (newBook.UserName != userService.Get(userId).UserName)
-            return Forbid();
+        // if (newBook.UserName != userService.Get(userId).UserName)
+        //     return Forbid();
             
         if (bookService.Update(id, newBook))
         {

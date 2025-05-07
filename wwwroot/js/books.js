@@ -51,7 +51,7 @@ const addItem = () => {
     const userName = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
 
     const item = {
-        Id: 0,
+        id: 0,
         Name: addName.value,
         Author: addAuthor.value,
         UserName: userName
@@ -88,39 +88,32 @@ function deleteItem(code) {
         .catch(error => console.error('Unable to delete item.', error));
 }
 
-function displayEditForm(id) {
-    const item = books.find(item => item.id === id);
+function displayEditForm(Id) {
+    const item = books.find(item => item.id === Id);
 
+    console.log(books);
+    document.getElementById('edit-id').value = item.id;
+    console.log(Id);
     document.getElementById('edit-name').value = item.name;
+    console.log(item.name);
     document.getElementById('edit-author').value = item.author;
+    document.getElementById('edit-username').value = item.userName;
     document.getElementById('editForm').style.display = 'block';
 }
 
 async function updateItem() {
-    const itemid = document.getElementById('edit-id').value;
+    const itemId = document.getElementById('edit-id').value;
+    console.log(itemId);
     const userName = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
-    let userId=0;
-    await fetch(`${uri}/${itemid}`, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            "Authorization": `Bearer ${token}`
-        }
-    }).then(response=> response.json())
-    .then(data=>{userId=data.userId
-    console.log(data)
-    console.log(userId)
-    })
-    .catch(error => console.error('Unable to get item.', error))
-    console.log(userId)
     const item = {
-        id: parseInt(itemid, 10),
+        id: parseInt(itemId, 10),
         name: document.getElementById('edit-name').value,
         author: document.getElementById('edit-author').value,
         userName:userName   
     };
 
-    fetch(`${uri}/${itemid}`, {
+    console.log(item);
+    fetch(`${uri}/${itemId}`, {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',

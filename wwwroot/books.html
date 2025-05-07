@@ -16,8 +16,10 @@
     <a href="./users.html" id="users-page-link" style="display: none;">Users</a><br>
 
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <input type="hidden" id="add-id">
         <input type="text" id="add-name" placeholder="Book name">
         <input type="text" id="add-author" placeholder="Author">
+        <input type="hidden" id="add-userName">
         <span id="bookFeedback"></span><br />
         <input type="submit" value="Add" id="add-book">
     </form>
