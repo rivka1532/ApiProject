@@ -72,7 +72,7 @@ public class UserService : IUserService
         if(user == null)
             return false;
         
-        var userBooks = _bookService.Get().Where(b => b.UserName == user.UserName).ToList();
+        var userBooks = _bookService.Get().Where(b => b.UserId == user.Id).ToList();
         foreach (var book in userBooks)
         {
             _bookService.Delete(book.Id);

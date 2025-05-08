@@ -13,9 +13,7 @@ function getUsers() {
     }
 
     const payload = JSON.parse(atob(token.split('.')[1]));
-    console.log(payload);
     const role = payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-    console.log(role);
     if (role != "Admin") {
         alert("You are not authorized to this page. You must be an admin to access this page. Please log in again.");
         window.location.href = "profile.html";
@@ -33,7 +31,6 @@ function getUsers() {
 }
 
 const addUser = () => {
-    console.log("in add user");
     const userNameTextbox = document.getElementById('add-userName');
     const emailTextbox = document.getElementById('add-email');
     const passwordTextbox = document.getElementById('add-password');
@@ -81,21 +78,16 @@ function deleteUser(id) {
 
 function displayEditForm(id) {
     const user = users.find(user => user.id === id);
-    // console.log(user);
     document.getElementById('edit-Id').value = user.id;
     document.getElementById('edit-Name').value = user.userName;
     document.getElementById('edit-Email').value = user.email;
     document.getElementById('edit-Role').value = user.role;
     document.getElementById('edit-Password').value = user.password;
-    console.log(user.role);
-    console.log(document.getElementById('edit-Role').value);
     document.getElementById('editForm').style.display = 'block';
 }
 
 function updateUser() {
     const userId = document.getElementById('edit-Id').value;
-    console.log(userId);
-    console.log(document.getElementById('edit-Role').value);
     const user = {
         id: parseInt(userId, 10),
         userName: document.getElementById('edit-Name').value,
@@ -103,8 +95,6 @@ function updateUser() {
         role: document.getElementById('edit-Role').value,
         password: document.getElementById('edit-Password').value
     };
-    console.log(user);
-    console.log(userId);
     fetch(`${uri}/${userId}`, {
         method: 'PUT',
         headers: {

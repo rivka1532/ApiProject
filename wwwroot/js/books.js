@@ -12,10 +12,8 @@ function getItems() {
 
     if (token) {
         payload = JSON.parse(atob(token.split('.')[1]));
-        console.log(payload);
         // const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
         const role=payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-        console.log(role);
         if(role=="Admin")
         {
             const usersPageLink=document.getElementById('users-page-link');
@@ -43,20 +41,18 @@ function getItems() {
 
 
 const addItem = () => {
-    console.log("in addItem");
     // const addCode = document.getElementById('add-code');
     // const addName = document.getElementById('add-name');
     // const addAuthor = document.getElementById('add-author');
 
-    const userName = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+    const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
 
     const item = {
         id: 0,
         Name: addName.value,
         Author: addAuthor.value,
-        UserName: userName
+        userId: userId
     };
-    console.log(item);
 
     fetch(uri, {
         method: 'POST',
@@ -91,28 +87,23 @@ function deleteItem(code) {
 function displayEditForm(Id) {
     const item = books.find(item => item.id === Id);
 
-    console.log(books);
     document.getElementById('edit-id').value = item.id;
-    console.log(Id);
     document.getElementById('edit-name').value = item.name;
-    console.log(item.name);
     document.getElementById('edit-author').value = item.author;
-    document.getElementById('edit-username').value = item.userName;
+    document.getElementById('edit-userid').value = item.userId;
     document.getElementById('editForm').style.display = 'block';
 }
 
 async function updateItem() {
     const itemId = document.getElementById('edit-id').value;
-    console.log(itemId);
-    const userName = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+    const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
     const item = {
         id: parseInt(itemId, 10),
         name: document.getElementById('edit-name').value,
         author: document.getElementById('edit-author').value,
-        userName:userName   
+        userId:userId   
     };
 
-    console.log(item);
     fetch(`${uri}/${itemId}`, {
         method: 'PUT',
         headers: {

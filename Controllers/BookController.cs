@@ -36,7 +36,7 @@ public class BookController : ControllerBase
         var books = bookService.Get();
         if (books == null)
             return Ok(new List<Book>());
-        return Ok(bookService.Get().Where(b => b.UserName == currentUser.UserName));    
+        return Ok(bookService.Get().Where(b => b.UserId == currentUser.Id));    
     }
 
     [HttpGet("{id}")]
@@ -47,7 +47,7 @@ public class BookController : ControllerBase
         var book = bookService.Get(id);
         if (book == null)
             return NotFound();
-        if (book.UserName != userService.Get(userId).UserName)
+        if (book.UserId != userService.Get(userId).Id)
             return Unauthorized();
         return book;
     }
@@ -58,7 +58,7 @@ public class BookController : ControllerBase
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
-        newBook.UserName = user.UserName;
+        newBook.UserId = user.Id;
         var newId = bookService.Insert(newBook);
         if (newId == -1)
         {
@@ -75,7 +75,7 @@ public class BookController : ControllerBase
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
-        newBook.UserName = user.UserName;
+        newBook.UserId = user.Id;
         // if (newBook.UserName != userService.Get(userId).UserName)
         //     return Forbid();
             
@@ -94,7 +94,7 @@ public class BookController : ControllerBase
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
         Book book = bookService.Get(id);
-        if (book.UserName != user.UserName )
+        if (book.UserId != user.Id )
             return Forbid();
 
         if (bookService.Delete(id))

@@ -3329,3 +3329,4 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 [17:52:04 INF] Application started. Press Ctrl+C to shut down. {"SourceContext":"Microsoft.Hosting.Lifetime"}
 [17:52:04 INF] Hosting environment: Development {"SourceContext":"Microsoft.Hosting.Lifetime"}
 [17:52:04 INF] Content root path: C:\Users\user1\core\myApiProject {"SourceContext":"Microsoft.Hosting.Lifetime"}
+[17:53:42 INF] Application is shutting down... {"SourceContext":"Microsoft.Hosting.Lifetime"}

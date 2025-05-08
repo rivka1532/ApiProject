@@ -15,9 +15,7 @@ function getProfile() {
 
     
     payload = JSON.parse(atob(token.split('.')[1]));
-    console.log(payload);
     const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
-    console.log(userId);
 
     fetch(`${uri}/${userId}`, {
         method: 'GET',
@@ -29,7 +27,6 @@ function getProfile() {
     .then(response => response.json())
     .then(data => {
         user = data;
-        console.log(data);
         document.getElementById('userName').textContent  = data.userName;
         document.getElementById('email').textContent  = data.email;
         document.getElementById('role').textContent  = data.role;})
@@ -39,7 +36,6 @@ function getProfile() {
 }
 
 function displayEditForm() {
-    console.log(user);
     document.getElementById('editForm').style.display = 'block';
     document.getElementById('edit-username').value = user.userName;
     document.getElementById('edit-email').value = user.email;
@@ -49,7 +45,6 @@ function displayEditForm() {
     const role=payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
     if(role=="User")
     {
-        console.log("in user");
         const editRole =document.getElementById('edit-role');
         editRole.disabled = true;
     }
@@ -58,7 +53,6 @@ function displayEditForm() {
 }
 
 function updateUser() {
-    console.log(user);
     const userId = user.id;
 
     const editUser = {
@@ -69,7 +63,6 @@ function updateUser() {
         password: document.getElementById('edit-password').value
     };
 
-    console.log(editUser);
     fetch(`${uri}/${userId}`, {
         method: 'PUT',
         headers: {
@@ -80,7 +73,6 @@ function updateUser() {
         body: JSON.stringify(editUser)
     })
     .then(data => {
-        console.log('Updated user:', data);
         getProfile();
     })   
     .then(() => closeInput()) 
