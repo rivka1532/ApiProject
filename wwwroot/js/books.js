@@ -72,8 +72,8 @@ const addItem = () => {
         .catch(error => console.error('Unable to add item.', error));
 }
 
-function deleteItem(code) {
-    fetch(`${uri}/${code}`, {
+function deleteItem(id) {
+    fetch(`${uri}/${id}`, {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',

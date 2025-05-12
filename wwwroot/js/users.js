@@ -1,6 +1,8 @@
 const uri = '/User';
 let users = [];
+let books = [];
 let token = '';
+
 
 
 function getUsers() {
@@ -112,6 +114,7 @@ function updateUser() {
 
 function closeInput() {
     document.getElementById('editForm').style.display = 'none';
+    document.getElementById('editBookForm').style.display = 'none';
 }
 
 function _displayUsers(data) {
@@ -121,6 +124,10 @@ function _displayUsers(data) {
     const button = document.createElement('button');
 
     data.forEach(user => {
+        let booksButton = button.cloneNode(false);
+        booksButton.innerText = 'Books';
+        booksButton.setAttribute('onclick', `getBooks(${user.id})`);
+
         let editButton = button.cloneNode(false);
         editButton.innerText = 'Edit';
         editButton.setAttribute('onclick', `displayEditForm(${user.id})`);
@@ -144,10 +151,13 @@ function _displayUsers(data) {
         td4.appendChild(document.createTextNode(user.role));
 
         let td5 = tr.insertCell(4);
-        td5.appendChild(editButton);
-        
+        td5.appendChild(booksButton);
+
         let td6 = tr.insertCell(5);
-        td6.appendChild(deleteButton);
+        td6.appendChild(editButton);
+        
+        let td7 = tr.insertCell(6);
+        td7.appendChild(deleteButton);
     });
 
     users = data;
@@ -166,27 +176,6 @@ const signout = () => {
 function goToMyProfile() {
     window.location.href = 'profile.html';
 }
-
-// async function checkAvailability(type, value) {
-//     const response = await fetch(`/api/User/check-${type}?value=${encodeURIComponent(value)}`);
-//     return response.ok ? (await response.json()).available : false;
-//   }
-
-//   document.getElementById("username").addEventListener("blur", async function () {
-//     const username = this.value;
-//     const available = await checkAvailability("username", username);
-//     const feedback = document.getElementById("usernameFeedback");
-//     feedback.textContent = available ? "זמין" : "כבר תפוס";
-//     feedback.style.color = available ? "green" : "red";
-//   });
-
-//   document.getElementById("email").addEventListener("blur", async function () {
-//     const email = this.value;
-//     const available = await checkAvailability("email", email);
-//     const feedback = document.getElementById("emailFeedback");
-//     feedback.textContent = available ? "זמין" : "כבר תפוס";
-//     feedback.style.color = available ? "green" : "red";
-//   });
 
 let isUsernameAvailable = false;
 let isEmailAvailable = false;
@@ -252,3 +241,130 @@ addEmail.addEventListener('input', async function () {
 })
 
 addPassword.addEventListener('input', validateForm);
+
+const getBooks = (id) => {
+    document.getElementById('add-book-UserId').value = id;
+    fetch(`Book/${id}`, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => displayBooks(data))
+    .catch(error => console.error('Unable to get books.', error));
+
+}
+
+const displayBooks = (data) => {
+    const tBody = document.getElementById('books');
+    tBody.innerHTML = '';
+    const button = document.createElement('button');
+
+    data.forEach(book => {
+        let editButton = button.cloneNode(false);
+        editButton.innerText = 'Edit';
+        editButton.setAttribute('onclick', `displayEditBookForm(${book.id})`);
+
+        let deleteButton = button.cloneNode(false);
+        deleteButton.innerText = 'Delete';
+        deleteButton.setAttribute('onclick', `deleteBook(${book.id})`);
+
+        let tr = tBody.insertRow();
+
+        let td1 = tr.insertCell(0);
+        td1.appendChild(document.createTextNode(book.id));
+
+        let td2 = tr.insertCell(1);
+        td2.appendChild(document.createTextNode(book.name));
+
+        let td3 = tr.insertCell(2);
+        td3.appendChild(document.createTextNode(book.author));
+
+        let td4 = tr.insertCell(3);
+        td4.appendChild(editButton);
+        
+        let td5 = tr.insertCell(4);
+        td5.appendChild(deleteButton);
+    });
+
+    document.getElementById('booksForm').style.display = 'block';
+    books = data;
+    console.log(books);
+}
+
+const addBook = () => {
+    const book = {
+        id: 0,
+        name: document.getElementById('add-book-Name').value,
+        author: document.getElementById('add-book-Author').value,
+        userId: document.getElementById('add-book-UserId').value
+    }
+
+    fetch('/Book', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(book)
+    })
+        .then(response => response.json())
+        .then(() => {
+            getBooks(document.getElementById('add-book-UserId').value);
+            document.getElementById('add-book-Name').value = "";
+            document.getElementById('add-book-Author').value = "";
+        })
+        .catch(error => console.error('Unable to add item.', error));
+}
+
+function deleteBook(id) {
+    fetch(`Book/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            "Authorization": `Bearer ${token}`
+        }
+    })
+        .then(() => getBooks(document.getElementById('add-book-UserId').value))
+        .catch(error => console.error('Unable to delete item.', error));
+}
+
+function displayEditBookForm(Id) {
+    const book = books.find(item => item.id === Id);
+
+    document.getElementById('edit-book-Id').value = book.id;
+    document.getElementById('edit-book-Name').value = book.name;
+    document.getElementById('edit-book-Author').value = book.author;
+    document.getElementById('edit-book-UserId').value = book.userId;
+    document.getElementById('editBookForm').style.display = 'block';
+}
+
+async function updateItem() {
+    const bookId = document.getElementById('edit-book-Id').value;
+    const book = {
+        id: parseInt(bookId, 10),
+        name: document.getElementById('edit-book-Name').value,
+        author: document.getElementById('edit-book-Author').value,
+        userId:document.getElementById('edit-book-UserId').value   
+    };
+
+    fetch(`/Book/${bookId}`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(book)
+    })
+        .then(() => getBooks(document.getElementById('add-book-UserId').value))
+        .catch(error => console.error('Unable to update item.', error));
+
+    closeInput();
+
+    return false;
+
+}

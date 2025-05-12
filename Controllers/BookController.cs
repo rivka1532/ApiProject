@@ -40,25 +40,25 @@ public class BookController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [Authorize]
-    public ActionResult<Book> Get(int id)
+    [Authorize(Policy = "Admin")]
+    public ActionResult<IEnumerable<Book>> Get(int id)
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        var book = bookService.Get(id);
-        if (book == null)
+        var books = bookService.Get().FindAll(b => b.UserId == id);
+        if (books == null)
             return NotFound();
-        if (book.UserId != userService.Get(userId).Id)
-            return Unauthorized();
-        return book;
+        // if (book.UserId != userService.Get(userId).Id)
+        //     return Unauthorized();
+        return books;
     }
     
     [HttpPost]
     [Authorize]
     public ActionResult Post(Book newBook)
     {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
-        newBook.UserId = user.Id;
+        // var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        // var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
+        // newBook.UserId = user.Id;
         var newId = bookService.Insert(newBook);
         if (newId == -1)
         {
@@ -74,8 +74,10 @@ public class BookController : ControllerBase
     public ActionResult Put(int id, Book newBook)
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
-        newBook.UserId = user.Id;
+        // var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
+        if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value != "Admin" && userId != newBook.UserId.ToString())
+            return Unauthorized();
+        // newBook.UserId = user.Id;
         // if (newBook.UserName != userService.Get(userId).UserName)
         //     return Forbid();
             
@@ -92,11 +94,10 @@ public class BookController : ControllerBase
     public ActionResult Delete(int id)
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        var user = userService.Get().FirstOrDefault(u => u.Id.ToString() == userId);
+        var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
         Book book = bookService.Get(id);
-        if (book.UserId != user.Id )
-            return Forbid();
-
+        if ( userRole!= "Admin" && userId != book.UserId.ToString())
+            return Unauthorized();
         if (bookService.Delete(id))
             return Ok();
             

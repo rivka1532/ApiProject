@@ -6,6 +6,11 @@ using System.Text;
 using myApiProject.Interfaces;
 using System.Text.Json.Serialization;
 using Serilog;
+using Microsoft.AspNetCore.Authentication.Cookies;
+// using Microsoft.AspNetCore.Authentication.Google;
+
+
+
 
 // Log.Logger = new LoggerConfiguration()
 //     .WriteTo.Console()
@@ -13,6 +18,9 @@ using Serilog;
 //     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+
+var googleClientId = builder.Configuration["GoogleOAuth:ClientId"];
+var googleClientSecret = builder.Configuration["GoogleOAuth:ClientSecret"];
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -52,7 +60,16 @@ builder.Services.AddHttpsRedirection(options =>
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    // options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    // options.DefaultChallengeScheme = "Google";
 })
+// .AddCookie()
+// .AddGoogle(googleOptions =>
+// {
+//     googleOptions.ClientId = googleClientId;
+//     googleOptions.ClientSecret = googleClientSecret;
+//     googleOptions.CallbackPath = "/signin-google";
+// })
 .AddJwtBearer(options =>
 {
     options.RequireHttpsMetadata = false;
@@ -139,6 +156,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapFallbackToFile("/my-books", "books.html");
+app.MapFallbackToFile("/my-profile", "profile.html");
+app.MapFallbackToFile("/users", "users.html");
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseHttpsRedirection();
