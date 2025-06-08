@@ -8,90 +8,95 @@
 </head>
 
 <body>
-    <h1>Users CRUD</h1>
-    <a href="./books.html">Books page</a><br>
-
-    <div class="sign-out-container">
-        <button onclick="signout()">Sign out</button>
-    </div>
-
-    <button onclick="goToMyProfile()">My Profile</button>
+    <div class="main-container">
+        <div class="left-section">
+            <h1>Users CRUD</h1>
+            <a href="./books.html">Books page</a><br>
     
-
-    <form action="javascript:void(0);" method="POST" onsubmit="addUser()">
-        <input type="text" id="add-userName" placeholder="User Name" required>
-        <span id="usernameFeedback"></span><br />
-        <input type="email" id="add-email" placeholder="User Email" required>
-        <span id="emailFeedback"></span><br />
-        <select id="add-role">
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-        </select>
-        <input type="password" id="add-password" placeholder="Password" required>
-        <input type="submit" value="Add User" id="add-user" disabled>
-    </form>
-
-    <div id="editForm" style="display: none;">
-        <h3>Edit User</h3>
-        <form action="javascript:void(0);" onsubmit="updateUser()">
-            <input type="hidden" id="edit-Id">
-            <input type="text" id="edit-Name">
-            <input type="email" id="edit-Email">
-            <select id="edit-Role">
-                <option value="User">User</option>
-                <option value="Admin">Admin</option>
-            </select>
-            <input type="hidden" id="edit-Password">
-            <input type="submit" value="Save">
-            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
-        </form>
-    </div>
-
-    <div id="booksForm" style="display: none;">
-        <h3>Books</h3>
-        <form action="javascript:void(0);" method="post" onsubmit="addBook()">
-            <input type="hidden" id="add-book-Id">
-            <input type="text" id="add-book-Name" placeholder="Book Name" required>
-            <input type="text" id="add-book-Author" placeholder="Book Author" required>
-            <input type="hidden" id="add-book-UserId">
-            <input type="submit" value="Add Book">
-        </form>
-        <div id="editBookForm" style="display: none;">
-            <form action="javascript:void(0)"  onsubmit="updateItem()">
-                <input type="hidden" id="edit-book-Id">
-                <input type="text" id="edit-book-Name" placeholder="Book Name" required>
-                <input type="text" id="edit-book-Author" placeholder="Book Author" required>
-                <input type="hidden" id="edit-book-UserId">
-                <input type="submit" value="Save Book">
-                <a onclick="closeInput()" aria-label="Close">&#10006;</a>   
+            <div class="sign-out-container">
+                <button onclick="signout()">Sign out</button>
+            </div>
+    
+            <button onclick="goToMyProfile()">My Profile</button>
+    
+    
+            <form action="javascript:void(0);" method="POST" onsubmit="addUser()">
+                <input type="text" id="add-userName" placeholder="User Name" required>
+                <span id="usernameFeedback"></span><br />
+                <input type="email" id="add-email" placeholder="User Email" required>
+                <span id="emailFeedback"></span><br />
+                <select id="add-role">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <input type="password" id="add-password" placeholder="Password" required>
+                <input type="submit" value="Add User" id="add-user" disabled>
             </form>
+    
+            <div id="editForm" style="display: none;">
+                <h3>Edit User</h3>
+                <form action="javascript:void(0);" onsubmit="updateUser()">
+                    <input type="hidden" id="edit-Id">
+                    <input type="text" id="edit-Name">
+                    <input type="email" id="edit-Email">
+                    <select id="edit-Role">
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    <input type="hidden" id="edit-Password">
+                    <input type="submit" value="Save">
+                    <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+                </form>
+            </div>
+    
+            <p id="counter"></p>
+    
+            <table>
+                <tr>
+                    <th>User Name</th>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tbody id="users"></tbody>
+            </table>
         </div>
-        <table>
-            <tr>
-                <th>Book Id</th>
-                <th>Book Name</th>
-                <th>Book Author</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tbody id="books"></tbody>
-        </table>
+    
+        <div class="right-section" id="booksForm" style="display: none;">
+            <h3>Books</h3>
+            <form action="javascript:void(0);" method="post" onsubmit="addBook()">
+                <input type="hidden" id="add-book-Id">
+                <input type="text" id="add-book-Name" placeholder="Book Name" required>
+                <input type="text" id="add-book-Author" placeholder="Book Author" required>
+                <input type="hidden" id="add-book-UserId">
+                <input type="submit" value="Add Book">
+            </form>
+            <div id="editBookForm" style="display: none;">
+                <form action="javascript:void(0)" onsubmit="updateItem()">
+                    <input type="hidden" id="edit-book-Id">
+                    <input type="text" id="edit-book-Name" placeholder="Book Name" required>
+                    <input type="text" id="edit-book-Author" placeholder="Book Author" required>
+                    <input type="hidden" id="edit-book-UserId">
+                    <input type="submit" value="Save Book">
+                    <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+                </form>
+            </div>
+            <table>
+                <tr>
+                    <th>Book Id</th>
+                    <th>Book Name</th>
+                    <th>Book Author</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tbody id="books"></tbody>
+            </table>
+        </div>
     </div>
 
-    <p id="counter"></p>
-
-    <table>
-        <tr>
-            <th>User Name</th>
-            <th>Id</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tbody id="users"></tbody>
-    </table>
 
     <script src="./js/users.js"></script>
     <script type="text/javascript">
